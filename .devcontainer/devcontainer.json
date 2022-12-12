@@ -1,0 +1,23 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "features": {
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "latest"
+		},
+		"ghcr.io/rio/features/k9s:1": {
+			"version": "latest"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "curl https://get.okteto.com -sSfL | sh",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
+			]
+		}
+	}
+}
