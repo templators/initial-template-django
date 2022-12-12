@@ -1,0 +1,20 @@
+build:
+  demo:
+    context: .
+    image: okteto.dev/demo:latest
+
+deploy:
+  - kubectl apply -f k8s.yaml
+
+dev:
+  demo:
+    image: $OKTETO_BUILD_DEMO_IMAGE
+    command: bash
+    sync:
+      - src:/app
+    forward:
+      - 8000:8000
+    envFiles:
+      - config/django.env
+      - config/database.env
+      - config/digitalocean.env
